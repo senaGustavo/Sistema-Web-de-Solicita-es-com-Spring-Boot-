@@ -9,4 +9,5 @@ public class Solicitacao {
     protected String categoria;
     protected String prioridade;
     protected String status;
+
 }
