@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitações | Solicita+</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2 class="logo">Solicita<span>+</span></h2>
+
+    <nav>
+        <a href="/formulario">Nova Solicitação</a>
+        <a href="/lista" class="active">Solicitações</a>
+    </nav>
+</div>
+
+<main class="main-content">
+
+    <header class="topbar">
+        <div>
+            <p class="subtitle">GERENCIAMENTO</p>
+            <h1>Solicitações</h1>
+        </div>
+
+        <a href="/formulario" class="btn btn-primary">
+            + Nova Solicitação
+        </a>
+    </header>
+
+    <section class="content-card">
+
+        <div class="section-heading">
+            <h2>Solicitações cadastradas</h2>
+            <p>Acompanhe todas as solicitações registradas no sistema.</p>
+        </div>
+
+        <div class="table-container">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Solicitante</th>
+                        <th>Título</th>
+                        <th>Categoria</th>
+                        <th>Prioridade</th>
+                        <th>Status</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="s : ${solicitacoes}">
+                        <td th:text="${s.id}"></td>
+
+                        <td th:text="${s.nomeDoSolicitante}"></td>
+
+                        <td th:text="${s.titulo}"></td>
+
+                        <td th:text="${s.categoria}"></td>
+
+                        <td>
+                            <span class="priority"
+                                  th:classappend="${s.prioridade == 'Alta' ? ' priority-high' : (s.prioridade == 'Média' ? ' priority-medium' : ' priority-low')}"
+                                  th:text="${s.prioridade}">
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="status"
+                                  th:classappend="${s.status == 'Aberta' ? ' status-open' : (s.status == 'Em andamento' ? ' status-progress' : ' status-done')}"
+                                  th:text="${s.status}">
+                            </span>
+                        </td>
+
+                        <td>
+                            <a th:href="@{/detalhes/{id}(id=${s.id})}"
+                               class="action-link">
+                                Ver detalhes
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr th:if="${#lists.isEmpty(solicitacoes)}">
+                        <td colspan="7" class="empty-message">
+                            Nenhuma solicitação cadastrada.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+</body>
+</html>

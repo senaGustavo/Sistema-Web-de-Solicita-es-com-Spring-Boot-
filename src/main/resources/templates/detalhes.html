@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes | Solicita+</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2 class="logo">Solicita<span>+</span></h2>
+
+    <nav>
+        <a href="/formulario">Nova Solicitação</a>
+        <a href="/lista" class="active">Solicitações</a>
+    </nav>
+</div>
+
+<main class="main-content">
+
+    <header class="topbar">
+        <div>
+            <p class="subtitle">GERENCIAMENTO</p>
+            <h1>Detalhes da Solicitação</h1>
+        </div>
+
+        <a href="/lista" class="btn btn-secondary">
+            Voltar
+        </a>
+    </header>
+
+    <section class="content-card">
+
+        <div class="section-heading">
+            <p class="subtitle" th:text="'SOLICITAÇÃO #' + ${solicitacao.id}"></p>
+            <h2 th:text="${solicitacao.titulo}"></h2>
+            <p>Confira as informações e atualize o andamento.</p>
+        </div>
+
+        <div class="details-grid">
+
+            <div class="detail-item">
+                <span>Solicitante</span>
+                <strong th:text="${solicitacao.nomeDoSolicitante}"></strong>
+            </div>
+
+            <div class="detail-item">
+                <span>E-mail</span>
+                <strong th:text="${solicitacao.email}"></strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Categoria</span>
+                <strong th:text="${solicitacao.categoria}"></strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Prioridade</span>
+                <strong th:text="${solicitacao.prioridade}"></strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Status atual</span>
+                <strong th:text="${solicitacao.status}"></strong>
+            </div>
+
+        </div>
+
+        <div class="status-section">
+            <h3>Atualizar status</h3>
+            <p>Selecione o novo andamento da solicitação.</p>
+
+            <form th:action="@{/status/{id}(id=${solicitacao.id})}"
+                  method="post">
+
+                <div class="form-group">
+                    <label for="status">Novo status</label>
+
+                    <select name="status" id="status" required>
+                        <option value="Aberta"
+                                th:selected="${solicitacao.status == 'Aberta'}">
+                            Aberta
+                        </option>
+
+                        <option value="Em andamento"
+                                th:selected="${solicitacao.status == 'Em andamento'}">
+                            Em andamento
+                        </option>
+
+                        <option value="Concluída"
+                                th:selected="${solicitacao.status == 'Concluída'}">
+                            Concluída
+                        </option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    Atualizar status
+                </button>
+
+            </form>
+        </div>
+
+    </section>
+
+</main>
+
+</body>
+</html>

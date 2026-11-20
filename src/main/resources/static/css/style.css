@@ -1,0 +1,475 @@
+/* ==============================
+   CONFIGURAÇÕES GERAIS
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #0d0b14;
+    --sidebar: #13101d;
+    --surface: #191525;
+    --surface-hover: #211b31;
+    --border: #30283f;
+
+    --primary: #9b5de5;
+    --primary-hover: #8144ca;
+    --primary-light: #c49aff;
+
+    --text: #f2eff8;
+    --text-muted: #a39ab4;
+
+    --green: #42c995;
+    --yellow: #f0bd57;
+    --red: #ed7185;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+/* ==============================
+   MENU LATERAL
+============================== */
+
+.sidebar {
+    position: fixed;
+    width: 245px;
+    height: 100vh;
+    background: var(--sidebar);
+    border-right: 1px solid var(--border);
+    padding: 32px 20px;
+}
+
+.logo {
+    font-size: 25px;
+    margin-bottom: 55px;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sidebar nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 14px 16px;
+    border-radius: 9px;
+    transition: 0.2s;
+    font-size: 14px;
+}
+
+.sidebar nav a:hover {
+    background: var(--surface-hover);
+    color: var(--text);
+}
+
+.sidebar nav a.active {
+    background: rgba(155, 93, 229, 0.16);
+    color: var(--primary-light);
+    border-left: 3px solid var(--primary);
+}
+
+/* ==============================
+   CONTEÚDO PRINCIPAL
+============================== */
+
+.main-content {
+    margin-left: 245px;
+    padding: 40px;
+    max-width: 1600px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.topbar h1 {
+    font-size: 29px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.subtitle {
+    color: var(--primary-light);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.user-badge {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(155, 93, 229, 0.2);
+    color: var(--primary-light);
+    font-weight: 700;
+}
+
+/* ==============================
+   CARDS
+============================== */
+
+.content-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.section-heading {
+    margin-bottom: 30px;
+}
+
+.section-heading h2 {
+    font-size: 21px;
+    margin-bottom: 9px;
+}
+
+.section-heading p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-top: 7px;
+}
+
+/* ==============================
+   FORMULÁRIOS
+============================== */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+.form-group label {
+    font-size: 13px;
+    color: #d6cee5;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    height: 48px;
+    background: #100d19;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0 14px;
+    color: var(--text);
+    outline: none;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.form-group input::placeholder {
+    color: #756b84;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(155, 93, 229, 0.13);
+}
+
+.form-group select {
+    cursor: pointer;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+/* ==============================
+   BOTÕES
+============================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 43px;
+    padding: 0 19px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: var(--surface-hover);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    background: #302641;
+}
+
+/* ==============================
+   TABELA DE SOLICITAÇÕES
+============================== */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 750px;
+}
+
+thead {
+    background: #211b31;
+}
+
+th {
+    color: var(--text-muted);
+    text-align: left;
+    padding: 16px 13px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+}
+
+td {
+    padding: 17px 13px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    color: #ded8e9;
+}
+
+tbody tr:hover {
+    background: var(--surface-hover);
+}
+
+.action-link {
+    color: var(--primary-light);
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.action-link:hover {
+    color: white;
+}
+
+.empty-message {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 35px;
+}
+
+/* ==============================
+   STATUS E PRIORIDADE
+============================== */
+
+.status,
+.priority {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.status-open {
+    color: #c49aff;
+    background: rgba(155, 93, 229, 0.15);
+}
+
+.status-progress {
+    color: var(--yellow);
+    background: rgba(240, 189, 87, 0.13);
+}
+
+.status-done {
+    color: var(--green);
+    background: rgba(66, 201, 149, 0.13);
+}
+
+.priority-high {
+    color: var(--red);
+    background: rgba(237, 113, 133, 0.13);
+}
+
+.priority-medium {
+    color: var(--yellow);
+    background: rgba(240, 189, 87, 0.13);
+}
+
+.priority-low {
+    color: var(--green);
+    background: rgba(66, 201, 149, 0.13);
+}
+
+/* ==============================
+   DETALHES
+============================== */
+
+.details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 35px;
+}
+
+.detail-item {
+    background: #100d19;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 19px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-wrap: anywhere;
+}
+
+.detail-item span {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.detail-item strong {
+    color: var(--text);
+    font-size: 14px;
+}
+
+.status-section {
+    border-top: 1px solid var(--border);
+    padding-top: 28px;
+}
+
+.status-section h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.status-section p {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-bottom: 22px;
+}
+
+.status-section form {
+    max-width: 400px;
+}
+
+.status-section .btn {
+    margin-top: 5px;
+}
+
+/* ==============================
+   RESPONSIVIDADE
+============================== */
+
+@media (max-width: 850px) {
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .logo {
+        margin-bottom: 20px;
+    }
+
+    .sidebar nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 25px 18px;
+    }
+
+    .topbar h1 {
+        font-size: 23px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .form-grid,
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .full-width {
+        grid-column: span 1;
+    }
+
+    .content-card {
+        padding: 20px 15px;
+    }
+
+    .topbar {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .topbar .btn {
+        padding: 0 12px;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
+}

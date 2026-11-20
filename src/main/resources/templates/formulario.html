@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Solicitação | Solicitações</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2 class="logo">Solicita<span>+</span></h2>
+
+    <nav>
+        <a href="/formulario" class="active">Nova Solicitação</a>
+        <a href="/lista">Solicitações</a>
+    </nav>
+</div>
+
+<main class="main-content">
+
+    <header class="topbar">
+        <div>
+            <p class="subtitle">GERENCIAMENTO</p>
+            <h1>Nova Solicitação</h1>
+        </div>
+        <div class="user-badge">JP</div>
+    </header>
+
+    <section class="content-card">
+
+        <div class="section-heading">
+            <h2>Preencha os dados</h2>
+            <p>Informe os dados abaixo para registrar uma solicitação.</p>
+        </div>
+
+        <form th:action="@{/cadastrar}"
+              th:object="${solicitacao}"
+              method="post">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="nomeDoSolicitante">Nome do solicitante</label>
+                    <input type="text"
+                           id="nomeDoSolicitante"
+                           th:field="*{nomeDoSolicitante}"
+                           placeholder="Digite seu nome"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email"
+                           id="email"
+                           th:field="*{email}"
+                           placeholder="exemplo@email.com"
+                           required>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="titulo">Título da solicitação</label>
+                    <input type="text"
+                           id="titulo"
+                           th:field="*{titulo}"
+                           placeholder="Descreva brevemente sua solicitação"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="categoria">Categoria</label>
+                    <select id="categoria"
+                            th:field="*{categoria}"
+                            required>
+                        <option value="">Selecione uma categoria</option>
+                        <option value="Suporte">Suporte</option>
+                        <option value="Dúvida">Dúvida</option>
+                        <option value="Sugestão">Sugestão</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="prioridade">Prioridade</label>
+                    <select id="prioridade"
+                            th:field="*{prioridade}"
+                            required>
+                        <option value="">Selecione a prioridade</option>
+                        <option value="Baixa">Baixa</option>
+                        <option value="Média">Média</option>
+                        <option value="Alta">Alta</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="form-actions">
+                <a href="/lista" class="btn btn-secondary">Cancelar</a>
+                <button type="submit" class="btn btn-primary">
+                    Cadastrar solicitação
+                </button>
+            </div>
+
+        </form>
+    </section>
+
+</main>
+
+</body>
+</html>
